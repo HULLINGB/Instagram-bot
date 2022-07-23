@@ -82,16 +82,7 @@ password = "PASSWORD"
 ig = InstagramBot(username, password)
 ig.login()
 
-
-while(j < 1):
-    while(i < 1):
-        try:
-
-
-
-            time.sleep(5)
-
-            hashtags = ['amazing', 'beautiful', 'adventure', 'photography', 'nofilter',
+hashtags = ['amazing', 'beautiful', 'adventure', 'photography', 'nofilter',
                 'newyork', 'artsy', 'alumni', 'lion', 'best', 'fun', 'happy',
                 'art', 'funny', 'me', 'followme', 'follow', 'cinematography', 'cinema',
                 'love', 'instagood', 'instagood', 'followme', 'fashion', 'sun', 'scruffy',
@@ -195,17 +186,17 @@ while(j < 1):
                 'mother',
                     ]
 
-            choser = random.randint(1, 3)
+while(j < 1):
+    while(i < 1):
+        try:
+
+            time.sleep(5)
             rand = random.randint(1, 3)
             r = RandomWords()
             tag = r.random_word()
 
             ig.go_to_hashtag(tag)
             ig.like_photos(rand)
-            rand = rand / 5
-            rand = rand * 2
-            counter = counter + rand
-            print(counter)
 
         except:
             break
