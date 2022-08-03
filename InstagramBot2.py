@@ -21,11 +21,12 @@ time.sleep(5)
 passworword_elem = driver.find_element_by_xpath("//input[@name='password']")
 passworword_elem.clear()
 passworword_elem.send_keys(password)
+time.sleep(2)
 passworword_elem.send_keys(Keys.RETURN)
 time.sleep(5)
 
 //number = random.randint(0, 9)
-time.sleep(1)
+time.sleep(2)
 
 i = 1
 y = 1
