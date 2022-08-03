@@ -5,82 +5,30 @@ from random_words import RandomWords
 import time
 import random
 
+driver = webdriver.Firefox()
+driver.get("https://www.instagram.com/")
+time.sleep(5)
 
-class InstagramBot:
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-        self.driver = webdriver.Firefox()
-
-    def closeBrowser(self):
-        self.driver.close()
-
-    def login(self):
-        driver = self.driver
-        driver.get("https://www.instagram.com/")
-        time.sleep(5)
-        user_name_elem = driver.find_element_by_xpath("//input[@name='username']")
-        user_name_elem.clear()
-        user_name_elem.send_keys(self.username)
-        passworword_elem = driver.find_element_by_xpath("//input[@name='password']")
-        passworword_elem.clear()
-        passworword_elem.send_keys(self.password)
-        passworword_elem.send_keys(Keys.RETURN)
-        time.sleep(2)
-
-    def expand_photo(self):
-        driver = self.driver
-        select = driver.find_element_by_class_name("_9AhH0")
-        select.click()
-
-    def go_to_hashtag(self, hashtag):
-
-        driver = self.driver
-        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
-        time.sleep(2)
-
-    def like_photos(self, amount):
-        driver = self.driver
-        # gathering photos
-        like = driver.find_element_by_class_name('v1Nh3')
-        like.click()
-
-        i = 1
-        while i < amount:
-            try:
-                random2 = random.randint(1, 5)
-                if(random2 == 1):
-                    rand = random.randint(1, 500)
-                    time.sleep(rand)
-                    driver.find_element_by_class_name('fr66n').click()
-                    driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
-                    i += 1
-
-                if (random2 == 4):
-                    rand = random.randint(1, 30)
-                    time.sleep(rand)
-                    driver.find_element_by_class_name('fr66n').click()
-                    driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
-                else:
-                    print("")
-            except:
-                print("")
-
-    def auto_comment(self, content):
-        time.sleep(3)
-        driver = self.driver
-        comment = driver.find_element_by_xpath("//textarea[contains(@placeholder, 'Add a comment')]")
-        comment.send_keys(content)
-
-usernames = ['USERNAME']
-
-i = 0
-j = 0
-username = random.choice(usernames)
+username = "USERNAME"
 password = "PASSWORD"
-ig = InstagramBot(username, password)
-ig.login()
+time.sleep(5)
+
+user_name_elem = driver.find_element_by_xpath("//input[@name='username']")
+user_name_elem.clear()
+user_name_elem.send_keys(username)
+time.sleep(5)
+
+passworword_elem = driver.find_element_by_xpath("//input[@name='password']")
+passworword_elem.clear()
+passworword_elem.send_keys(password)
+passworword_elem.send_keys(Keys.RETURN)
+time.sleep(5)
+
+//number = random.randint(0, 9)
+time.sleep(1)
+
+i = 1
+y = 1
 
 hashtags = ['amazing', 'beautiful', 'adventure', 'photography', 'nofilter',
                 'newyork', 'artsy', 'alumni', 'lion', 'best', 'fun', 'happy',
@@ -175,7 +123,7 @@ hashtags = ['amazing', 'beautiful', 'adventure', 'photography', 'nofilter',
                 'hangingbyathread', 'venue', 'concert', 'blot', 'redrocks', 'sickness', 'lovingeachother',
                 'brainstorming', 'science', 'goodposture', 'chicagostylepizza', 'whatnow', 'lonely', 'rediculous', 'drunk'
                 'space', 'nebula', 'science', 'geeks', 'gamers', 'glasses', 'videogames', 'bigscreen', 'fire',
-                'european', 'hiking', 'starwars', 'hollywood',
+                'hash', 'european', 'hiking', 'starwars', 'hollywood',
                 'streetfight', 'scenic', 'longwayhome', 'lifeishard', 'kingsoopers', 'reading', 'python', 'pop',
                 'michaeljackson', 'shots', 'beer', 'bar', 'cheesecakefactory', 'celebrity', 'thepeople',
                 'outdoors', 'camping', 'vacation', 'travel', 'yolo',
@@ -185,18 +133,29 @@ hashtags = ['amazing', 'beautiful', 'adventure', 'photography', 'nofilter',
                 'exotics', 'watches', 'rolex', 'petition', 'liberal', 'unbreakable', 'curious', 'loving'
                 'mother',
                     ]
-
-while(j < 1):
-    while(i < 1):
+                    
+while i < 1:
+    while y < 1:
         try:
-
             time.sleep(5)
-            rand = random.randint(1, 3)
-            r = RandomWords()
-            tag = r.random_word()
-
-            ig.go_to_hashtag(tag)
-            ig.like_photos(rand)
-
+            #hashtag = random.choice(hashtags)
+            #RandomWords() doesnt work without instantiating to a variable
+            r = RandomWords() 
+            hashtag = r.random_word()
+            driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
+            time.sleep(5)
+            like = driver.find_element_by_class_name('v1Nh3')
+            like.click()
+            time.sleep(5)
+            driver.find_element_by_class_name('fr66n').click()
+            time.sleep(5)
+            driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
+            time.sleep(5)
         except:
             break
+
+             
+            
+
+
+
