@@ -25,7 +25,7 @@ time.sleep(2)
 passworword_elem.send_keys(Keys.RETURN)
 time.sleep(5)
 
-//number = random.randint(0, 9)
+#number = random.randint(0, 9)
 time.sleep(2)
 
 i = 1
